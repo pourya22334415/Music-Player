@@ -1,0 +1,205 @@
+$max-width: 40rem;
+$curr-track-height: 32rem;
+$cover-width: 19rem;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    background-color: #111111;
+    color-scheme: light dark;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sticky-nav {
+    height: $curr-track-height;
+    max-width: $max-width;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    background-color: #111111;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #logo {
+        padding-top: 1.4rem;
+    }
+
+    #curr-track {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        #init-image {
+            padding-top: 5rem;
+            max-width: $cover-width;
+        }
+
+        .music-cover {
+            padding-top: 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                border-radius: 12px;
+                max-width: $cover-width;
+            }
+
+            div {
+                overflow: hidden;
+                position: relative;
+                min-width: 10rem;
+                padding-top: 0.5rem;
+
+                h3 {
+                    width: 17rem;
+                    font-weight: 700;
+                    font-size: 24px;
+                    will-change: transform;
+
+                    display: inline-block;
+                    white-space: nowrap;
+
+                    &.scroll {
+                        animation: scroll-left 8s linear infinite;
+                    }
+                }
+            }
+
+            p {
+                font-weight: 800;
+                font-size: 15px;
+                color: #BABAB9;
+            }
+        }
+
+        #audio-player {
+            padding-left: 1.4rem;
+            padding-right: 1.4rem;
+            padding-top: 1rem;
+            margin-bottom: 1rem;
+            width: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.6rem;
+
+            #progress-bar {
+                width: 100%;
+                
+            }
+
+            #timers {
+                display: flex;
+                justify-content: space-between;
+                color: #BABAB9;
+                font-size: 11px;
+                font-weight: 800;
+            }
+        }
+
+        #controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            div {
+                display: flex;
+                align-items: center;
+                column-gap: 1.2rem;
+            }
+        }
+    }
+}
+
+#track-list {
+    margin-top: $curr-track-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1C1C;
+    max-width: $max-width;
+    border-radius: 0 0 12px 12px;
+
+    #selected-track {
+        background-color: #474747;
+    }
+
+    .item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+
+        p {
+            font-weight: 800;
+            font-size: 11px;
+            color: #BABAB9;
+        }
+
+        &:hover {
+            background-color: #474747;
+            transition: 0.3s;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            column-gap: 12px;
+
+            img {
+                width: 48px;
+                height: 48px;
+                border-radius: 8px;
+            }
+
+            h3 {
+                font-weight: 800;
+                font-size: 14px;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
